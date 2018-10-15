@@ -1,0 +1,57 @@
+== Trabajo Título
+== Sistema Automatizado de Ventas bajo el framework Ruby on Rails
+=== Bernardo Arancibia / Sebastián Machuca - UTFSM JMC 2010
+
+Sistema gestionador de Ventas y Pedidos, escrita con el framework Ruby on Rails y utilizando herramientas
+como jQuery, PostgreSQL, Git, Haml, Sass, HighCharts (LazyHighCharts), Vim, Archlinux y Fedora GNU/Linux.
+
+Muchas gracias a GitHub quien nos facilitó repositorios privados de forma gratuita y sin ningún interés de por medio,
+para poder desarrollar nuestro proyecto.  Sin ellos y su excelente servicio de Control de Versiones (Git)
+en la nube, nos hubiese sido muy difícil administrar y trabajar de la forma que logramos hacer durante el
+proceso de desarrollo de software.
+
+== Gemas Utilizadas (Gemfile)
+
+ source 'http://rubygems.org'
+ gem 'rails', '3.0.1'
+
+ gem 'pg'
+ gem 'paperclip'
+ gem 'haml'
+ gem "will_paginate", :git => "http://github.com/mislav/will_paginate.git", :branch => "rails3"
+ gem 'validates_timeliness', '~> 3.0.2'
+ gem 'foreigner'
+ gem 'haml-rails'
+ gem 'jquery-rails'
+
+ group :development do
+   gem 'unicorn'
+ end
+
+== Licenciamiento
+
+Se permite el uso total o parcial de esta obra para el uso que se estime necesario.
+
+  Copyright (c) 2010  | Bernardo Arancibia Araos | Sebastián Machuca Sáez
+
+  Permission is hereby granted, free of charge, to any
+  person obtaining a copy of this software and associated
+  documentation files (the "Software"), to deal in the
+  Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the
+  Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice
+  shall be included in all copies or substantial portions of
+  the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

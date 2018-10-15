@@ -1,0 +1,28 @@
+02/11/2010
+----------
+
++ REVISAR BOTON CANCELAR, provoca error al apretar
+  dos veces luego de errores validación.
+
++ MODIFICAR MODELO R cierres_cajas
+
++ Layouts:
+  - header & footer
+  - menues
+
++ Páginas estáticas:
+  - Home
+  - About
+
++ Buscadores (autocomplete)
++ will_paginate
+
++ Verificar cuando no hay registros
++ Mantenedores:
+  - Categorías
+  - Proveedores
+  - Clientes
+  - Vendedores
+  - Notas
+  - Cierres Cajas
+

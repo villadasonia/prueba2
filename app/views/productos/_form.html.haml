@@ -1,0 +1,85 @@
+= form_for @producto, :html => { :multipart => true } do |f|
+  #form
+    %table
+      %tr
+        %td
+        %td
+          = render "shared/error_messages", :target => @producto
+      %tr
+        %td.label= f.label :nombre, 'Nombre*'
+        %td= f.text_field :nombre
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label= f.label :proveedor_id, 'Proveedor*'
+        %td= f.collection_select :proveedor_id, @proveedores, :id, :nombre
+      %tr
+        %td.label= f.label :categoria_id, 'Categoría*'
+        %td= f.collection_select :categoria_id, @categorias, :id, :nombre
+      %tr
+        %td
+        %td
+          %hr
+      %tr
+        %td.label= f.label :granel, 'Producto a granel'
+        %td= f.check_box :granel
+      %tr
+        %td
+        %td.hint Marcar si el producto es a granel
+      %tr
+        %td
+        %td
+          %hr
+      %tr
+        %td.label= f.label :precio_unitario, 'Precio*'
+        %td
+          = f.text_field :precio_unitario
+      %tr
+        %td
+        %td.hint Valor monetario entero sin signo peso ($)
+      %tr
+        %td.label= f.label :stock_real, 'Stock real*'
+        %td= f.text_field :stock_real
+      %tr
+        %td
+        %td.hint Cantidad unitaria o cantidad en gramos según corresponda
+      %tr
+        %td.label= f.label :stock_critico, 'Stock crítico*'
+        %td= f.text_field :stock_critico
+      %tr
+        %td
+        %td.hint Cantidad unitaria o cantidad a gramos según corresponda
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label
+          = f.label :imagen
+          %td
+            = f.file_field :imagen
+      %tr
+        %td
+        %td.hint Imagen representativa del producto (jpg, png no mayor a 1 MB)
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td
+          %td
+            = link_to image_tag(@producto.imagen.url(:small)), image_path(@producto.imagen.url), :target => "_blank", :alt => 'imagen' if @producto.imagen_file_name
+      %tr
+        %td
+          %td.hint
+            %hr
+            (*) Datos Obligatorios
+            %hr
+      %tr
+        %td
+          %td
+            = f.submit 'Enviar'
+            &nbsp;
+            = link_to 'Cancelar', :productos

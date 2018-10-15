@@ -1,0 +1,47 @@
+- title @producto.nombre.titleize
+
+#form
+  %table
+    %tr
+      %td
+      %td
+        %a{:href => '#'}
+          = image_tag @producto.imagen.url(:small), :alt => 'imagen'
+        %hr
+    %tr
+      %td.label
+        Precio
+      %td.precio
+        = number_to_currency @producto.precio_unitario
+    %tr
+      %td.label
+        Stock
+      %td
+        = stock_real_helper @producto
+    %tr
+      %td
+      %td
+        %hr
+    %tr
+      %td.label
+        Categoría
+      %td
+        = link_to @producto.categoria.nombre.titleize, :controller => 'productos', :categoria  => @producto.categoria.id
+    %tr
+      %td.label
+        Proveedor
+      %td
+        = link_to @producto.proveedor.nombre, @producto.proveedor
+    %tr
+      %td
+      %td
+        %hr
+    %tr
+      %td
+      %td
+        - if @administrador
+          = link_to 'Editar', [:edit, @producto]
+          |
+          = link_to 'Eliminar',@producto, :confirm => '¿Está seguro de eliminar este producto?', :method => :delete
+
+%p= link_to 'Volver a productos', :productos

@@ -1,0 +1,24 @@
+- title @proveedor.nombre.titleize
+%table
+  %tr
+    %td Teléfono:
+    %td= "#{@proveedor.cod_fono} - #{@proveedor.num_fono}"
+  %tr
+    %td E-mail:
+    %td= @proveedor.email
+  %tr
+    %td Encargado:
+    %td= "#{@proveedor.nombre_encargado} #{@proveedor.apellidos_encargado}"
+  %tr
+    %td Productos:
+    %td
+      = link_to pluralize(@productos,"producto"), :controller => 'productos', :proveedor => @proveedor.id
+  %tr
+    %td
+    %td
+      - if @administrador
+        %br
+        = link_to 'Editar', [:edit, @proveedor]
+        |
+        = link_to 'Eliminar',@proveedor, :confirm => '¿Está seguro de eliminar este proveedor?', :method => :delete
+%p= link_to "Volver", :back

@@ -1,0 +1,22 @@
+= form_for @nota do |f|
+  #form
+    %table
+      %tr
+        %td
+        %td
+          = render "shared/error_messages", :target => @nota
+      %tr
+        %td
+        %td= f.text_area :texto, :rows => 5, :cols => 70
+      %tr
+        %td
+          %td.hint
+            %hr
+            (*) Datos Obligatorios
+            %hr
+      %tr
+        %td
+          %td
+            = f.submit 'Enviar'
+            &nbsp;
+            = link_to 'Cancelar', :notas

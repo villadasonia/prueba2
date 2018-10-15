@@ -1,0 +1,88 @@
+= form_for @venta do |f|
+  #form
+    %table
+      %tr
+        %td
+        %td
+          = render "shared/error_messages", :target => @venta
+      %tr
+        - if :detalleventas
+        = f.fields_for :detalleventas do |builder|
+          %tr
+            %td
+            %td.fields
+              = render "autocomplete", :objeto => @productos
+              = builder.text_field :nombre_de_producto, :size => 20, :maxlength => 40, :class => "buscar"
+              = builder.text_field :cantidad, :size => 4, :maxlength => 6
+              - unless @venta.detalleventas.length == 1
+                = builder.check_box :_destroy, :class => 'eliminardetalle'
+              =# link_to_remove_fields "eliminar", builder
+          %tr
+            %td
+            %td.hint
+              Nombre del producto
+              &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+              &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+              &nbsp;&nbsp; &nbsp;&nbsp;
+              Unidades o Gramos
+
+      %tr
+        %td
+        %td
+          =# link_to_add_fields "+ Agregar producto", f, :detalleventas
+          = f.submit 'Agregar Producto', :name => "add_detalle"
+          - unless @venta.detalleventas.length == 1
+            = f.submit 'Eliminar Producto', :name => "remove_detalle"
+      %tr
+        %td
+        %td
+          %hr
+      %tr
+        %td.label= f.label :numero_boleta, 'N° Boleta'
+        %td= f.text_field :numero_boleta
+      %tr
+        %td.label= f.label :tipo_pago
+        %td= f.select :tipo_pago, options_for_select({"efectivo" => 0, "crédito" => 1, "tarjeta de débito" => 2}, @venta.tipo_pago)
+        = f.fields_for :credito do |builder|
+          %tr
+            %td.label.credito= builder.label :cliente_id
+            %td.credito
+              = builder.collection_select :cliente_id, @clientes, :id, :nombre_completo
+              = builder.hidden_field :_destroy, :class => "destroy_build"
+          %tr
+            %td.label.credito= builder.label :valor_interes_entero, 'Interés %'
+            %td.credito= builder.text_field :valor_interes_entero
+          %tr
+            %td.credito
+            %td.hint.credito
+              Porcentaje de interés (valor entero sin signo %) a cobrar al pasar
+              %br
+              la fecha de pago
+              %hr
+          %tr
+            %td.label.credito= builder.label :fecha_pago
+            %td.credito= builder.date_select :fecha_pago, :start_year => Time.now.year, :default => 1.month.from_now
+          %tr
+            %td.credito
+            %td.hint.credito
+              Fecha desde la que se va a cobrar el interés,
+              %br
+              de no ser cancelado el crédito
+      %tr
+        %td
+          %hr
+        %td
+          %hr
+      %tr
+        %td
+        %td
+          = f.submit 'Enviar', :class => 'enviarventa'
+          &nbsp;
+          = link_to 'Cancelar', :ventas
+
+- if params[:action] == 'edit'
+  %br
+  %p.hint
+    (*) La eliminación de un producto dentro de la edición de una venta, será considerada como devolución de producto en buen estado,
+    %br
+    afectando en los datos de la venta involucrada y el ajuste de inventario.

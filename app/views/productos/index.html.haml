@@ -1,0 +1,48 @@
+- title "Listado de Productos"
+= link_to "Productos con stock crítico", "#{:productos}?stock=1"
+|
+= link_to "Productos sin stock", "#{:productos}?stock=2"
+|
+= link_to "Todos", :productos
+#opciones
+  %table
+    %td
+      %strong Filtrar por:
+      = select_tag "tipo_producto", options_for_select({ "granel" => true, "unitario" => false}, params[:granel]),:onchange => "document.location='/productos?granel=' + this.value"
+      = select_tag "orden", options_for_select({ "stock crítico" => "stock_critico", "stock real" => "stock_real", "nombre" => "nombre" }, params[:orden]),:onchange => "document.location='/productos?orden=' + this.value"
+    %td.buscar_autocomplete
+      = render "shared/autocomplete", :objeto => @productos_todos
+
+%br
+%p= link_to 'Nuevo Producto', [:new, :producto], :class => 'action_button radius' if @administrador
+
+
+%center
+  = will_paginate @productos
+%br
+
+- if @productos.length == 0
+  %p.empty_table No existen productos ingresados.
+- else
+  %table.main_table
+    %th Nombre
+    %th Precio
+    %th Stock
+    %th Actualizado
+    - @productos.each do |producto|
+      %tr
+        %td= link_to producto.nombre.titleize, producto
+        %td= number_to_currency(producto.precio_unitario)
+        %td= stock_real_helper producto
+        %td= tmp_to_date producto.updated_at
+
+        - if @administrador
+          %td= link_to 'Editar', [:edit, producto]
+          %td= link_to 'Eliminar', producto, :confirm => '¿Está seguro de eliminar este producto?', :method => :delete
+  %p= "Existe un total de #{@productos_todos.length} productos en la tienda."
+%center
+  = will_paginate @productos
+%br
+
+%p= link_to 'Nuevo Producto', [:new, :producto], :class => 'action_button radius' if @administrador
+

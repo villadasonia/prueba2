@@ -1,0 +1,25 @@
+= link_to "Catálogo", :catalogo
+|
+= link_to "Categorías", :categorias
+|
+= link_to "Productos", :productos
+|
+= link_to "Proveedores", :proveedores
+|
+= link_to "Clientes", :clientes
+|
+= link_to "Vendedores", :vendedores
+|
+= link_to "Pedidos (#{@count_pedidos})", :pedidos
+|
+= link_to "Créditos", :creditos
+|
+= link_to "Mermas", :mermas
+|
+= link_to "Ventas", :ventas
+- if @administrador
+  |
+  = link_to "Estadísticas", :cierre_venta
+- if @vendedor
+  |
+  = link_to "Cerrar Caja", [:new, :cierr_cajas]

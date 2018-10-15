@@ -1,0 +1,58 @@
+:javascript
+  $(function() {
+    var data = #{raw @productos.map {|o| o.nombre}};
+    $(".nombreprod").autocomplete(data);
+  });
+
+= form_for @merma do |f|
+  #form
+    %table
+      %tr
+        %td
+        %td
+          = render "shared/error_messages", :target => @merma
+      %tr
+        %td.label= f.label :nombre_de_producto, 'Producto*'
+        %td= f.text_field :nombre_de_producto, :class => "nombreprod"
+      %tr
+        %td
+        %td.hint
+          Nombre del producto que desea agregar a merma
+      %tr
+        %td.label= f.label :cantidad, 'Cantidad*'
+        %td= f.text_field :cantidad, :size => 5, :maxlength => 5
+      %tr
+        %td
+        %td.hint
+          Cantidad del producto a merma
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label= f.label :tipo_merma, 'Tipo Merma*'
+        %td= f.select :tipo_merma, options_for_select({ "Autoconsumo" => 2, "Fecha de vencimiento cumplida" => 0, "Producto dañado" => 1,  "Otra razón" =>3 }, @merma.tipo_merma )
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label= f.label :comentario, 'Comentario'
+        %td= f.text_area :comentario
+      %tr
+        %td
+        %td.hint
+          En caso de otra razón, se puede adjuntar un comentario
+
+      %tr
+        %td
+          %td.hint
+            %hr
+            (*) Datos Obligatorios
+            %hr
+      %tr
+        %td
+          %td
+            = f.submit 'Enviar'
+            &nbsp;
+            = link_to 'Cancelar', :mermas

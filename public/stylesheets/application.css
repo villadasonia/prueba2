@@ -1,0 +1,274 @@
+body {
+  background-image: url(../images/body_background.png);
+  background-attachment: fixed;
+  font-family: arial;
+  font-size: 14px; }
+
+#header {
+  color: orange;
+  width: 85%;
+  height: 70px;
+  margin: auto; }
+  #header .title {
+    font-family: 'Covered By Your Grace', arial, serif;
+    font-size: 2.9em; }
+  #header td.session_menu {
+    width: 400px;
+    text-align: right; }
+  #header td {
+    padding-left: 0px; }
+  #header .orange {
+    color: orange;
+    text-shadow: 1px 2px 5px #ccc; }
+  #header .green {
+    color: #71B260;
+    text-shadow: 1px 2px 5px #ccc; }
+
+#container {
+  width: 85%;
+  background-color: white;
+  margin: auto;
+  color: #535353;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 60px;
+  -moz-border-radius: 10px 10px 0px 0px;
+  -webkit-border-radius: 10px 10px 0px 0px; }
+  #container a {
+    text-decoration: none;
+    color: green; }
+  #container h1 {
+    color: #333333;
+    padding-left: 10px; }
+  #container h2 {
+    color: #333333;
+    padding-left: 50px; }
+  #container a.action_button {
+    font-weight: bold;
+    padding: 10px;
+    background-color: #FF3F0F;
+    border: solid #FFCC94;
+    color: white; }
+
+#footer {
+  width: 85%;
+  background-color: grey;
+  margin: auto;
+  padding: 20px 20px 5px 20px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  color: #ABABAB; }
+  #footer ul li {
+    display: inline; }
+  #footer a {
+    color: white;
+    text-decoration: none; }
+
+img {
+  border: none; }
+
+.radius {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
+
+table.main_table {
+  border-spacing: 0px 1px;
+  margin-bottom: 20px;
+  font-size: 15px; }
+  table.main_table th {
+    background-color: grey;
+    color: white;
+    padding: 5px 5px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    border-style: solid;
+    border-width: 1px; }
+  table.main_table td {
+    background-color: #e9ffe2;
+    padding: 1em; }
+  table.main_table tr:hover td {
+    background-color: #aeffa6; }
+
+p.empty_table {
+  padding: 30px;
+  color: grey; }
+
+.notice {
+  background-color: #E2E6FF;
+  padding: 8px;
+  text-align: center; }
+
+#error {
+  padding-bottom: 20px; }
+
+.error {
+  color: white;
+  width: 600px;
+  padding: 8px;
+  text-align: center; }
+
+.errorExplanation {
+  background-color: #FFE9E9;
+  border: 2px solid red;
+  width: 450px; }
+
+.errorExplanation h2 {
+  padding: 5px;
+  height: 20px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #E51709;
+  color: white; }
+
+.errorExplanation ul li {
+  color: black;
+  text-align: left; }
+
+.field_with_errors {
+  font-weight: bold;
+  color: red;
+  display: inline; }
+
+.field_with_errors input {
+  background-color: #FFE9E9;
+  border: none; }
+
+#form {
+  width: 95%;
+  margin: auto; }
+  #form td {
+    padding-left: 25px;
+    padding-bottom: 5px; }
+  #form input {
+    font-size: 1.3em;
+    color: #333333; }
+  #form hr {
+    color: white;
+    border: none;
+    font-size: 1.5em; }
+
+.label {
+  font-weight: bold;
+  color: #333333;
+  text-align: right; }
+
+.hint {
+  font-size: .8em;
+  color: grey; }
+
+select {
+  font-size: 1.3em;
+  color: #333333; }
+
+table.factura {
+  font-size: 1em; }
+  table.factura td.total {
+    font-size: 2em;
+    font-weight: bold; }
+
+#opciones {
+  padding: 20px; }
+
+#autocomplete {
+  text-align: right;
+  padding-right: 150px; }
+
+.ac_results {
+  padding: 0px;
+  border: 1px solid grey;
+  background-color: white;
+  overflow: hidden;
+  z-index: 99999; }
+
+.ac_results ul {
+  width: 100%;
+  list-style-position: outside;
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.ac_results li {
+  margin: 0px;
+  padding: 2px 5px;
+  cursor: default;
+  display: block;
+  /*
+  if width will be 100% horizontal scrollbar will apear
+  when scroll mode will be used
+  */
+  /*width: 100%;*/
+  font: menu;
+  font-size: 1em;
+  /*
+  it is very important, if line-height not setted or setted
+  in relative units scroll will be broken in firefox
+  */
+  line-height: 16px;
+  overflow: hidden; }
+
+.ac_loading {
+  background: white url("../images/indicator.gif") right center no-repeat; }
+
+.ac_odd {
+  background-color: #eee; }
+
+.ac_over {
+  background-color: #AEFFA6;
+  color: black; }
+
+#session_menu {
+  width: 100%;
+  font-size: 80%; }
+  #session_menu a {
+    color: green;
+    text-decoration: none; }
+
+#first_session_menu {
+  color: white;
+  width: 100%;
+  margin: auto;
+  padding: 2px;
+  font-size: 90%;
+  margin-left: -10px;
+  text-align: right;
+  background-color: #e9ffe2;
+  -moz-border-radius: 20px 20px 0px 20px;
+  -webkit-border-radius: 20px 20px 0px 20px; }
+  #first_session_menu a {
+    color: green; }
+
+.datos_extra {
+  float: right; }
+
+.buscar_autocomplete {
+  padding-left: 50px; }
+
+#catalogo td {
+  padding: 15px; }
+
+table.notas {
+  border-collapse: separate;
+  border-spacing: 30px 15px; }
+  table.notas .texto {
+    font-family: 'Covered By Your Grace', arial, serif;
+    font-size: 1.4em; }
+  table.notas td {
+    background-color: #FAEE39;
+    height: 250px;
+    width: 250px;
+    padding: 20px; }
+  table.notas td:hover {
+    background-color: #FFF66B; }
+
+#notas_texto {
+  width: 250px; }
+
+table.libro_de_ventas td {
+  text-align: right; }
+table.libro_de_ventas td.total {
+  font-size: 2em; }
+
+#about img {
+  float: right;
+  padding-left: 10px; }

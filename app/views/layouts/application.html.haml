@@ -1,0 +1,26 @@
+!!!5
+%html
+  %head
+    %title= yield(:head) || "Provisiones Frutras y Verduras Chusmisa"
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Covered+By+Your+Grace"
+    = javascript_include_tag :defaults, "jquery.autocomplete","excanvas.compiled", "highcharts"
+    = csrf_meta_tag
+
+  %body
+    #header
+      = render "layouts/header"
+    #container
+      #first_session_menu
+        = render "layouts/menu_public" unless @vendedor || @cliente
+        = render "layouts/menu_vendedor" if @vendedor
+        = render "layouts/menu_cliente" if @cliente
+      %br
+      %h2= yield(:head)
+      = flash_helper
+      = yield
+    #footer
+      = render "layouts/footer"
+
+    -# debug(session)
+    -# debug(params)

@@ -1,0 +1,92 @@
+= form_for @vendedor do |f|
+  #form
+    %table
+      %tr
+        %td
+        %td
+          = render "shared/error_messages", :target => @vendedor
+      %tr
+        %td.label= f.label :rut, 'RUT*'
+        %td
+          = f.text_field :rut, :size => 10 , :maxlength => 8
+          = "-"
+          = f.text_field :dv, :maxlength =>1
+      %tr
+        %td
+        %td.hint
+          Número de rut y dígito verificador
+      %tr
+        %td.label= f.label :password, 'Contraseña*'
+        %td= f.password_field :password
+      %tr
+        %td.label= f.label :password_confirma, 'Confirmación contraseña*'
+        %td= f.password_field :password_confirma
+      %tr
+        %td
+        %td.hint
+          Contraseña de acceso del vendedor para ingresar al sistema
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label= f.label :administrador, 'Administrador'
+        %td= f.check_box :administrador
+      %tr
+        %td
+        %td.hint
+          Indicar si el vendedor podrá realizar labores administrativas
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label= f.label :activo, 'Activo'
+        %td= f.check_box :activo
+      %tr
+        %td
+        %td.hint
+          Permitir al vendedor ingresar al sistema
+      %tr
+        %td
+          %td
+            %hr
+
+      %tr
+        %td.label= f.label :nombre, 'Nombre*'
+        %td= f.text_field :nombre
+      %tr
+        %td.label= f.label :apellidos, 'Apellidos*'
+        %td= f.text_field :apellidos
+      %tr
+        %td
+        %td.hint
+          Datos personales del vendedor
+      %tr
+        %td
+          %td
+            %hr
+      %tr
+        %td.label= f.label :direccion, 'Dirección'
+        %td= f.text_field :direccion
+      %tr
+        %td.label= f.label :cod_fono, 'Código Teléfonico'
+        %td= f.text_field :cod_fono, :maxlength => 3
+      %tr
+        %td.label= f.label :num_fono, 'Número de Teléfono'
+        %td= f.text_field :num_fono, :maxlength => 9
+      %tr
+        %td.label= f.label :email, 'Correo Electrónico'
+        %td= f.text_field :email
+      %tr
+        %td
+          %td.hint
+            %hr
+            (*) Datos Obligatorios
+            %hr
+      %tr
+        %td
+          %td
+            = f.submit 'Enviar'
+            &nbsp;
+            = link_to 'Cancelar', :vendedores

@@ -1,0 +1,46 @@
+- title "Listado de Clientes"
+= link_to "Clientes inactivos", "#{:clientes}?activo=false"
+|
+= link_to "Clientes activos", "#{:clientes}?activo=true"
+|
+= link_to "Todos", :clientes
+
+:javascript
+  $(function() {
+    var data = #{raw @clientes_todos.map {|o| o.apellidos}};
+    $("#buscar").autocomplete(data);
+  });
+
+#autocomplete
+  - form_tag :action => "buscar"  do
+    = text_field_tag :buscar
+    = submit_tag "Buscar #{params[:controller].singularize}"
+
+%center
+  %p= will_paginate @clientes
+%br
+
+- if @clientes.length == 0
+  %p.empty_table No existen clientes registrados.
+- else
+  %table.main_table
+    %th Rut
+    %th Nombre
+    %th Número Teléfono
+    - @clientes.each do |cliente|
+      %tr
+        %td= cliente.rut.to_s + '-' + cliente.dv
+        %td= "#{cliente.nombre} #{cliente.apellidos}".titleize
+        %td= "#{cliente.cod_fono} - #{cliente.num_fono}"
+        %td.hint= cliente.email
+        %td= link_to "Creditos", [cliente, :creditos]
+        %td= link_to "Pedidos", [cliente, :pedidos]
+        - if @administrador
+          %td= link_to "Editar", [:edit, cliente]
+          %td= link_to "Eliminar", cliente, :method => :delete, :confirm =>'¿Está seguro de eliminar este cliente?'
+
+%center
+  %p= will_paginate @clientes
+%br
+
+%p= link_to "Nuevo Cliente", [:new,:cliente], :class => "action_button radius" if @administrador
